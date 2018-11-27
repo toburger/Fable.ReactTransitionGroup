@@ -1,8 +1,8 @@
 {
   "scripts": {
     "postinstall": "cd ./src && dotnet restore",
-    "build": "cd ./src && dotnet fable webpack",
-    "start": "cd ./src && dotnet fable webpack-dev-server"
+    "build": "cd ./src && dotnet fable webpack -- -p",
+    "start": "cd ./src && dotnet fable webpack-dev-server -- -d"
   },
   "private": true,
   "dependencies": {
