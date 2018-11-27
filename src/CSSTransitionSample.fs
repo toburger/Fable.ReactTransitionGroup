@@ -50,36 +50,32 @@ type CSSTransitionSample (props) =
                         ]
                     ]
                     cssTransitionWithRender [
-                        In self.state.showValidationMessage
-                        Timeout !^300
-                        ClassNames !^"message"
-                        UnmountOnExit true
-                        OnExited (fun _ ->
+                        CSSTransitionProp.In self.state.showValidationMessage
+                        CSSTransitionProp.Timeout !^300
+                        CSSTransitionProp.ClassNames !^"message"
+                        CSSTransitionProp.UnmountOnExit true
+                        CSSTransitionProp.OnExited (fun _ ->
                             self.setState(fun state _ -> {
                                 state with
                                     showValidationButton = true
                             })
                         )
                     ] (fun state ->
-                        ReactNode.Case1 (
-                            ReactChild.Case1 (
-                                div [
-                                    Class "help-block"
-                                ] [
-                                    str "Your name rocks!"
-                                    cssTransition [
-                                        In (state = Entered)
-                                        Timeout !^300
-                                        ClassNames !^"star"
-                                        UnmountOnExit true
-                                    ] (
-                                        div [ Class "star" ] [
-                                            str "⭐"
-                                        ]
-                                    )
+                        div [
+                            Class "help-block"
+                        ] [
+                            str "Your name rocks!"
+                            cssTransition [
+                                CSSTransitionProp.In (state = Entered)
+                                CSSTransitionProp.Timeout !^300
+                                CSSTransitionProp.ClassNames !^"star"
+                                CSSTransitionProp.UnmountOnExit true
+                            ] (
+                                div [ Class "star" ] [
+                                    str "⭐"
                                 ]
                             )
-                        )
+                        ]
                     )
                 ]
                 if self.state.showValidationButton then

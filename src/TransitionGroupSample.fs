@@ -31,15 +31,20 @@ type TransitionGroupSample (props) =
                 h4 [ Class "card-title" ] [
                     str "TransitionGroup sample"
                 ]
-                ol [] [
+                ol [
+                    Style [
+                        ListStyleType "none"
+                        Padding 0
+                    ]
+                ] [
                     transitionGroup [
-                        TransitionGroupProps.Custom("className", "todo-list")
+                        TransitionGroupProp.Class "todo-list"
                     ] [
                         for item in self.state.items ->
                             cssTransition [
-                                CSSTransitionProps.Key (string item.id)
-                                Timeout !^500
-                                ClassNames !^"fade"
+                                CSSTransitionProp.Key (string item.id)
+                                CSSTransitionProp.Timeout !^500
+                                CSSTransitionProp.ClassNames !^"fade"
                             ] (
                                 li [] [
                                     button [
