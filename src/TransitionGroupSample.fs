@@ -26,52 +26,56 @@ type TransitionGroupSample (props) =
         ]
     })
     override self.render () =
-        div [] [
-            ul [] [
-                transitionGroup [
-                    TransitionGroupProps.Custom("className", "todo-list")
-                ] [
-                    for item in self.state.items ->
-                        cssTransition [
-                            CSSTransitionProps.Key (string item.id)
-                            Timeout !^500
-                            ClassNames !^"fade"
-                        ] (
-                            li [] [
-                                button [
-                                    Type "button"
-                                    Class "remove-btn"
-                                    OnClick (fun _ ->
-                                        self.setState(fun state _ -> {
-                                            state with
-                                                items =
-                                                    state.items
-                                                    |> List.filter (fun i ->
-                                                        i.id <> item.id)
-                                        })
-                                    )
-                                // ] [ str "&times;" ]
-                                ] [ str "X" ]
-                                str item.text
-                            ]
-                        )
+        div [ Class "card" ] [
+            div [ Class "card-body" ] [
+                h4 [ Class "card-title" ] [
+                    str "TransitionGroup sample"
                 ]
+                ol [] [
+                    transitionGroup [
+                        TransitionGroupProps.Custom("className", "todo-list")
+                    ] [
+                        for item in self.state.items ->
+                            cssTransition [
+                                CSSTransitionProps.Key (string item.id)
+                                Timeout !^500
+                                ClassNames !^"fade"
+                            ] (
+                                li [] [
+                                    button [
+                                        Type "button"
+                                        Class "btn-small remove-btn"
+                                        OnClick (fun _ ->
+                                            self.setState(fun state _ -> {
+                                                state with
+                                                    items =
+                                                        state.items
+                                                        |> List.filter (fun i ->
+                                                            i.id <> item.id)
+                                            })
+                                        )
+                                    ] [ str "X" ]
+                                    str item.text
+                                ]
+                            )
+                    ]
+                ]
+                button [
+                    Type "button"
+                    OnClick (fun _ ->
+                        let text = Fable.Import.Browser.window.prompt("Enter some text")
+                        if not (System.String.IsNullOrEmpty text) then
+                            self.setState(fun state _ -> {
+                                state with
+                                    items =
+                                        state.items @ [
+                                            { id = System.Guid.NewGuid()
+                                              text = text }
+                                        ]
+                            })
+                    )
+                ] [ str "Add item" ]
             ]
-            button [
-                Type "button"
-                OnClick (fun _ ->
-                    let text = Fable.Import.Browser.window.prompt("Enter some text")
-                    if not (System.String.IsNullOrEmpty text) then
-                        self.setState(fun state _ -> {
-                            state with
-                                items =
-                                    state.items @ [
-                                        { id = System.Guid.NewGuid()
-                                          text = text }
-                                    ]
-                        })
-                )
-            ] [ str "Add item" ]
         ]
 
 let transitionGroupSample () =

@@ -16,25 +16,34 @@ type TransitionSample (props) =
     do base.setInitState({ show = false; entered = false })
 
     override self.render() =
-        div [] [
-            button [
-                OnClick (fun _ ->
-                    self.setState(fun state _ ->
-                        { state with show = not state.show }
-                    )
-                )
-            ] [ str "Toggle "]
-            div [] [
-                transitionWithRender [
-                    TransitionProps.In self.state.show
-                    TransitionProps.Timeout !^1000
-                    TransitionProps.UnmountOnExit true
-                ] (ReactNode.Case1 << ReactChild.Case1 << function
-                    | Entering -> str "Entering..."
-                    | Entered -> str "Entered!"
-                    | Exiting -> str "Exiting..."
-                    | Exited -> str "Exited!"
-                    | Unmounted -> null)
+        div [ Class "card" ] [
+            div [ Class "card-body" ] [
+                h4 [ Class "card-title" ] [
+                    str "Transition sample"
+                ]
+                div [ Class "row flex-middle" ] [
+                    div [] [
+                        button [
+                            OnClick (fun _ ->
+                                self.setState(fun state _ ->
+                                    { state with show = not state.show }
+                                )
+                            )
+                        ] [ str "Toggle "]
+                    ]
+                    div [ Class "col-fill col" ] [
+                        transitionWithRender [
+                            TransitionProps.In self.state.show
+                            TransitionProps.Timeout !^1000
+                            TransitionProps.UnmountOnExit true
+                        ] (ReactNode.Case1 << ReactChild.Case1 << function
+                            | Entering -> str "Entering..."
+                            | Entered -> str "Entered!"
+                            | Exiting -> str "Exiting..."
+                            | Exited -> str "Exited!"
+                            | Unmounted -> null)
+                    ]
+                ]
             ]
         ]
 

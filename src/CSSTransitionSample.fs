@@ -20,72 +20,81 @@ type CSSTransitionSample (props) =
         showValidationButton = false
     })
     override self.render () =
-        div [] [
-            yield form [] [
-                label [] [ str "Your name" ]
-                input [
-                    Type "text"
-                    Value self.state.name
-                    OnFocus (fun _ ->
-                        self.setState(fun state _ -> {
-                            state with
-                                showValidationMessage = false
-                        })
-                    )
-                    OnChange (fun e ->
-                        let target = e.target
-                        self.setState(fun state _ -> {
-                            state with
-                                name = target?value
-                                showValidationButton = true
-                        })
-                    )
+        div [ Class "card" ] [
+            div [ Class "card-body" ] [
+                yield h4 [ Class "card-title" ] [
+                    str "CSSTransition sample"
                 ]
-                cssTransitionWithRender [
-                    In self.state.showValidationMessage
-                    Timeout !^300
-                    ClassNames !^"message"
-                    UnmountOnExit true
-                    OnExited (fun _ ->
-                        self.setState(fun state _ -> {
-                            state with
-                                showValidationButton = true
-                        })
-                    )
-                ] (fun state ->
-                    ReactNode.Case1 (
-                        ReactChild.Case1 (
-                            div [
-                                Class "help-block"
-                            ] [
-                                str "Your name rocks!"
-                                cssTransition [
-                                    In (state = Entered)
-                                    Timeout !^300
-                                    ClassNames !^"star"
-                                    UnmountOnExit true
-                                ] (
-                                    div [ Class "star" ] [
-                                        str "⭐"
-                                    ]
-                                )
-                            ]
+                yield form [] [
+                    div [ Class "form-group" ] [
+                        label [ HtmlFor "text" ] [ str "Your name" ]
+                        input [
+                            Id "text"
+                            Class "input-block"
+                            Type "text"
+                            Value self.state.name
+                            OnFocus (fun _ ->
+                                self.setState(fun state _ -> {
+                                    state with
+                                        showValidationMessage = false
+                                })
+                            )
+                            OnChange (fun e ->
+                                let target = e.target
+                                self.setState(fun state _ -> {
+                                    state with
+                                        name = target?value
+                                        showValidationButton = true
+                                })
+                            )
+                        ]
+                    ]
+                    cssTransitionWithRender [
+                        In self.state.showValidationMessage
+                        Timeout !^300
+                        ClassNames !^"message"
+                        UnmountOnExit true
+                        OnExited (fun _ ->
+                            self.setState(fun state _ -> {
+                                state with
+                                    showValidationButton = true
+                            })
+                        )
+                    ] (fun state ->
+                        ReactNode.Case1 (
+                            ReactChild.Case1 (
+                                div [
+                                    Class "help-block"
+                                ] [
+                                    str "Your name rocks!"
+                                    cssTransition [
+                                        In (state = Entered)
+                                        Timeout !^300
+                                        ClassNames !^"star"
+                                        UnmountOnExit true
+                                    ] (
+                                        div [ Class "star" ] [
+                                            str "⭐"
+                                        ]
+                                    )
+                                ]
+                            )
                         )
                     )
-                )
-            ]
-            if self.state.showValidationButton then
-                yield button [
-                    OnClick (fun _ ->
-                        self.setState(fun state _ -> {
-                            state with
-                                showValidationButton = false
-                                showValidationMessage = true
-                        })
-                    )
-                ] [
-                    str "Validate form"
                 ]
+                if self.state.showValidationButton then
+                    yield button [
+                        OnClick (fun _ ->
+                            self.setState(fun state _ -> {
+                                state with
+                                    showValidationButton = false
+                                    showValidationMessage = true
+                            })
+                        )
+                    ] [
+                        str "Validate form"
+                    ]
+            ]
         ]
 
 let cssTransitionSample () =
