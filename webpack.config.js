@@ -8,11 +8,11 @@ module.exports = {
     mode: "development",
     entry: "./src/Fable.React.TransitionGroup.Sample.fsproj",
     output: {
-        path: path.join(__dirname, "./public"),
+        path: path.join(__dirname, "./docs"),
         filename: "bundle.js",
     },
     devServer: {
-        contentBase: "./public",
+        contentBase: "./docs",
         port: 8080,
     },
     module: {
