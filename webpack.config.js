@@ -5,15 +5,25 @@
 var path = require("path");
 
 module.exports = {
-    mode: "development",
     entry: "./src/Fable.React.TransitionGroup.Sample.fsproj",
     output: {
         path: path.join(__dirname, "./docs"),
-        filename: "bundle.js",
+        filename: "[name].js"
     },
     devServer: {
         contentBase: "./docs",
-        port: 8080,
+        port: 8080
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /node_modules/,
+                    name: "vendors",
+                    chunks: "all"
+                }
+            }
+        }
     },
     module: {
         rules: [{
