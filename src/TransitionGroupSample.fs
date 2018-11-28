@@ -31,6 +31,14 @@ type TransitionGroupSample (props) =
                 h4 [ Class "card-title" ] [
                     str "TransitionGroup sample"
                 ]
+                h5 [ Class "card-subtitle" ] [
+                    a [ Href "https://github.com/toburger/Fable.React.TransitionGroup.Samples/blob/master/src/TransitionGroupSample.fs" ] [
+                        str "Link to F# code"
+                    ]
+                    a [ Href "https://codesandbox.io/s/00rqyo26kn" ] [
+                        str "Link to original JavaScript code"
+                    ]
+                ]
                 ol [
                     Style [
                         ListStyleType "none"
