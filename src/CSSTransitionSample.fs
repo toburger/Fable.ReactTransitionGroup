@@ -25,7 +25,7 @@ type CSSTransitionSample (props) =
                 yield h4 [ Class "card-title" ] [
                     str "CSSTransition sample"
                 ]
-                yield h5 [ Class "card-subtitle" ] [
+                yield h6 [ Class "card-subtitle" ] [
                     a [ Href "https://github.com/toburger/Fable.React.TransitionGroup.Samples/blob/master/src/CSSTransitionSample.fs" ] [
                         str "Link to F# code"
                     ]
