@@ -4,7 +4,7 @@ open Fable.Core.JsInterop
 open Fable.Import.React
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.React.TransitionGroup
+open Fable.Helpers.ReactTransitionGroup
 
 type CSSTransitionSampleState = {
     name: string

@@ -3,7 +3,7 @@ module StaggeredChildAnimationSample
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.React.TransitionGroup
+open Fable.Helpers.ReactTransitionGroup
 
 let staggeredListSample () =
     let items = [1..15]
