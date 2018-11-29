@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Fable.Helpers.React.TransitionGroup.fs" />
+    <Compile Include="Fable.Helpers.ReactTransitionGroup.fs" />
     <Compile Include="TransitionSample.fs" />
     <Compile Include="CSSTransitionSample.fs" />
     <Compile Include="TransitionGroupSample.fs" />
