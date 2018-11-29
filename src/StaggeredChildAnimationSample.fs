@@ -29,7 +29,7 @@ let staggeredListSample () =
                 for i, item in List.indexed items ->
                     cssTransition [
                         CSSTransitionProp.Key (string i)
-                        CSSTransitionProp.Timeout !^(1000 * (i + 1))
+                        CSSTransitionProp.Timeout !^(100 * (i + 5))
                         CSSTransitionProp.ClassNames !^"slide-up"
                     ] (
                         div [
