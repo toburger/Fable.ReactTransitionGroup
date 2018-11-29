@@ -72,17 +72,11 @@
   transition: opacity 500ms ease-in;
 }
 
-.list {
-  list-style-type: square;
-  padding-left: 0;
-}
-
 .list-item {
-  background-color: #eee;
   padding: 10px;
   margin: 5px;
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   display: inline-block;
 }
 

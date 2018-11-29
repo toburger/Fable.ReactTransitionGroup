@@ -22,8 +22,7 @@ let staggeredListSample () =
             ]
             transitionGroup [
                 TransitionGroupProp.Appear true
-                TransitionGroupProp.Component !^"ol"
-                TransitionGroupProp.Class "list"
+                TransitionGroupProp.Class "list child-borders"
             ] [
                 for i, item in List.indexed items ->
                     cssTransition [
@@ -31,8 +30,8 @@ let staggeredListSample () =
                         CSSTransitionProp.Timeout !^(1000 * (i + 1))
                         CSSTransitionProp.ClassNames !^"slide-up"
                     ] (
-                        li [
-                            Class "list-item"
+                        div [
+                            Class "list-item background-secondary"
                             Style [
                                 TransitionDelay (sprintf "%fs" (float i * 0.05))
                             ]
