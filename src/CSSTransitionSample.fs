@@ -6,6 +6,8 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Helpers.ReactTransitionGroup
 
+importSideEffects "./CSSTransitionSample.css"
+
 type CSSTransitionSampleState = {
     name: string
     showValidationMessage: bool

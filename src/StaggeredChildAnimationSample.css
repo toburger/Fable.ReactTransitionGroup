@@ -1,0 +1,19 @@
+.list-item {
+  padding: 10px;
+  margin: 5px;
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+}
+
+/* Transition */
+.slide-up-appear {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.5s ease;
+}
+
+.slide-up-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+}

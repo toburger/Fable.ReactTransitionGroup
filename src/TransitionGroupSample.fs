@@ -6,6 +6,8 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Helpers.ReactTransitionGroup
 
+importSideEffects "./TransitionGroupSample.css"
+
 type Item = {
     id: System.Guid
     text: string

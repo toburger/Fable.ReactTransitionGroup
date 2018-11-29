@@ -5,6 +5,8 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Helpers.ReactTransitionGroup
 
+importSideEffects "./StaggeredChildAnimationSample.css"
+
 let staggeredListSample () =
     let items = [1..15]
     div [ Class "card" ] [
