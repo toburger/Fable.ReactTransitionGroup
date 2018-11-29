@@ -14,6 +14,9 @@ let renderApp () =
         div [ Class "margin" ] [
             TransitionGroupSample.transitionGroupSample ()
         ]
+        div [ Class "margin" ] [
+            StaggeredChildAnimationSample.staggeredListSample ()
+        ]
         blockquote [] [
             str "Samples ported from the "
             a [ Href "http://reactcommunity.org/react-transition-group/" ] [

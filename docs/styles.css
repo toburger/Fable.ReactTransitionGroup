@@ -71,3 +71,29 @@
   opacity: 0.01;
   transition: opacity 500ms ease-in;
 }
+
+.list {
+  list-style-type: square;
+  padding-left: 0;
+}
+
+.list-item {
+  background-color: #eee;
+  padding: 10px;
+  margin: 5px;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+}
+
+/* Transition */
+.slide-up-appear {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.5s ease;
+}
+
+.slide-up-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+}
