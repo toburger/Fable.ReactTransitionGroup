@@ -28,7 +28,7 @@ type CSSTransitionSample (props) =
                     str "CSSTransition sample"
                 ]
                 yield h6 [ Class "card-subtitle" ] [
-                    a [ Href "https://github.com/toburger/Fable.ReactTransitionGroup.Samples/blob/master/src/CSSTransitionSample.fs" ] [
+                    a [ Href "https://github.com/toburger/Fable.ReactTransitionGroup/blob/master/samples/CSSTransitionSample.fs" ] [
                         str "Link to F# code"
                     ]
                     a [ Href "https://codesandbox.io/s/m77l2vp00x" ] [

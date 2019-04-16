@@ -21,7 +21,7 @@ type TransitionSample (props) =
                     str "Transition sample"
                 ]
                 h6 [ Class "card-subtitle" ] [
-                    a [ Href "https://github.com/toburger/Fable.ReactTransitionGroup.Samples/blob/master/src/TransitionSample.fs" ] [
+                    a [ Href "https://github.com/toburger/Fable.ReactTransitionGroup/blob/master/samples/TransitionSample.fs" ] [
                         str "Link to F# code"
                     ]
                     a [ Href "https://codesandbox.io/s/741op4mmj0" ] [

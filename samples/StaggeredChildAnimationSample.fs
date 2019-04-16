@@ -15,7 +15,7 @@ let staggeredListSample () =
                 str "Staggered Child Animation sample"
             ]
             h6 [ Class "card-subtitle" ] [
-                a [ Href "https://github.com/toburger/Fable.ReactTransitionGroup.Samples/blob/master/src/StaggeredChildAnimationSample.fs" ] [
+                a [ Href "https://github.com/toburger/Fable.ReactTransitionGroup/blob/master/samples/StaggeredChildAnimationSample.fs" ] [
                     str "Link to F# code"
                 ]
                 a [ Href "https://codepen.io/cheryllaird/pen/OXVpVv" ] [
