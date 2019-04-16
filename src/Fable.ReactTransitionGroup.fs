@@ -1,9 +1,9 @@
-module Fable.Helpers.ReactTransitionGroup
+module Fable.ReactTransitionGroup
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Import
-open Fable.Helpers.React
+open Fable.React
+open Browser.Types
 
 type Timeout = {
     enter: int option
@@ -42,24 +42,24 @@ type TransitionProp =
     /// Called with the transitioning DOM node and a done callback.
     /// Allows for more fine grained transition end logic.
     /// Note: Timeouts are still used as a fallback if provided.
-    | AddEndListener of (Browser.HTMLElement -> (unit -> unit) -> unit)
+    | AddEndListener of (HTMLElement -> (unit -> unit) -> unit)
     /// A transition callback fired immediately after the `enter` or `appear` class is applied.
-    | OnEnter of (Browser.HTMLElement -> bool -> unit)
+    | OnEnter of (HTMLElement -> bool -> unit)
     /// A transition callback fired immediately after the `enter-active` or `appear-active` class is applied.
-    | OnEntering of (Browser.HTMLElement -> bool -> unit)
+    | OnEntering of (HTMLElement -> bool -> unit)
     /// A transition callback fired immediately after the `enter` or `appear` classes are removed and the done class is added to the DOM node.
-    | OnEntered of (Browser.HTMLElement -> bool -> unit)
+    | OnEntered of (HTMLElement -> bool -> unit)
     /// A transition callback fired immediately after the `exit` class is applied.
-    | OnExit of (Browser.HTMLElement -> unit)
+    | OnExit of (HTMLElement -> unit)
     /// A transition callback fired immediately after the `exit-active` is applied.
-    | OnExiting of (Browser.HTMLElement -> unit)
+    | OnExiting of (HTMLElement -> unit)
     /// A transition callback fired immediately after the `exit` classes are removed and the exit-done class is added to the DOM node.
-    | OnExited of (Browser.HTMLElement -> unit)
+    | OnExited of (HTMLElement -> unit)
     /// A function child can be used instead of a React element.
     /// This function is called with the current transition status
     /// (`entering`, `entered`, `exiting`, `exited`, `unmounted`),
     /// which can be used to apply context specific props to a element.
-    | Children of U2<React.ReactElement, TransitionStatus -> React.ReactElement>
+    | Children of U2<ReactElement, TransitionStatus -> ReactElement>
     | [<CompiledName "className">] Class of string
     | Ref of (obj -> obj)
     | Key of string
@@ -102,24 +102,24 @@ type CSSTransitionProp =
     /// Called with the transitioning DOM node and a done callback.
     /// Allows for more fine grained transition end logic.
     /// Note: Timeouts are still used as a fallback if provided.
-    | AddEndListener of (Browser.HTMLElement -> (unit -> unit) -> unit)
+    | AddEndListener of (HTMLElement -> (unit -> unit) -> unit)
     /// A transition callback fired immediately after the `enter` or `appear` class is applied.
-    | OnEnter of (Browser.HTMLElement -> bool -> unit)
+    | OnEnter of (HTMLElement -> bool -> unit)
     /// A transition callback fired immediately after the `enter-active` or `appear-active` class is applied.
-    | OnEntering of (Browser.HTMLElement -> bool -> unit)
+    | OnEntering of (HTMLElement -> bool -> unit)
     /// A transition callback fired immediately after the `enter` or `appear` classes are removed and the done class is added to the DOM node.
-    | OnEntered of (Browser.HTMLElement -> bool -> unit)
+    | OnEntered of (HTMLElement -> bool -> unit)
     /// A transition callback fired immediately after the `exit` class is applied.
-    | OnExit of (Browser.HTMLElement -> unit)
+    | OnExit of (HTMLElement -> unit)
     /// A transition callback fired immediately after the `exit-active` is applied.
-    | OnExiting of (Browser.HTMLElement -> unit)
+    | OnExiting of (HTMLElement -> unit)
     /// A transition callback fired immediately after the `exit` classes are removed and the exit-done class is added to the DOM node.
-    | OnExited of (Browser.HTMLElement -> unit)
+    | OnExited of (HTMLElement -> unit)
     /// A function child can be used instead of a React element.
     /// This function is called with the current transition status
     /// (`entering`, `entered`, `exiting`, `exited`, `unmounted`),
     /// which can be used to apply context specific props to a element.
-    | Children of U2<React.ReactElement, TransitionStatus -> React.ReactElement>
+    | Children of U2<ReactElement, TransitionStatus -> ReactElement>
     /// The animation ClassNames applied to the element as it enters or exits.
     /// A single name can be provided and it will be suffixed for each stage: e.g.
     ///
@@ -139,7 +139,7 @@ type TransitionGroupProp =
     /// You can change this behavior by providing a component prop.
     /// If you use React v16+ and would like to avoid a wrapping <div> element you can pass in `Component null`.
     /// This is useful if the wrapping div borks your css styles.
-    | Component of React.ReactType
+    | Component of ReactElement
     /// A convenience prop that enables or disables appear animations for all children.
     /// Note that specifying this will override any defaults set on individual children Transitions.
     | Appear of bool
@@ -152,7 +152,7 @@ type TransitionGroupProp =
     /// You may need to apply reactive updates to a child as it is exiting.
     /// This is generally done by using cloneElement however in the case of an
     /// exiting child the element has already been removed and not accessible to the consumer.
-    | ChildFactory of (React.ReactElement -> React.ReactElement)
+    | ChildFactory of (ReactElement -> ReactElement)
     | [<CompiledName "className">] Class of string
     | Ref of (obj -> obj)
     | Key of string
@@ -168,7 +168,7 @@ type TransitionGroupProp =
 /// element it renders, it only tracks Enter and Exit states for the elements.
 /// It's up to you to give meaning and effect to those states. For example we can
 /// add styles to a element when it enters or exits.
-let transition (props: TransitionProp list) (child: React.ReactElement): React.ReactElement =
+let transition (props: TransitionProp list) (child: ReactElement): ReactElement =
     let props = (TransitionProp.Children !^child)::props
     ofImport "Transition" "react-transition-group" (keyValueList CaseRules.LowerFirst props) []
 
@@ -181,19 +181,19 @@ let transition (props: TransitionProp list) (child: React.ReactElement): React.R
 /// element it renders, it only tracks Enter and Exit states for the elements.
 /// It's up to you to give meaning and effect to those states. For example we can
 /// add styles to a element when it enters or exits.
-let transitionWithRender (props: TransitionProp list) (render: TransitionStatus -> React.ReactElement): React.ReactElement =
+let transitionWithRender (props: TransitionProp list) (render: TransitionStatus -> ReactElement): ReactElement =
     let props = (TransitionProp.Children !^render)::props
     ofImport "Transition" "react-transition-group" (keyValueList CaseRules.LowerFirst props) []
 
 /// A transition element using CSS transitions and animations.
 /// See `transition` for more information.
-let cssTransition (props: CSSTransitionProp list) (child: React.ReactElement): React.ReactElement =
+let cssTransition (props: CSSTransitionProp list) (child: ReactElement): ReactElement =
     let props = (CSSTransitionProp.Children !^child)::props
     ofImport "CSSTransition" "react-transition-group" (keyValueList CaseRules.LowerFirst props) []
 
 /// A transition element using CSS transitions and animations.
 /// See `transitionWithRender` for more information.
-let cssTransitionWithRender (props: CSSTransitionProp list) (render: TransitionStatus -> React.ReactElement): React.ReactElement =
+let cssTransitionWithRender (props: CSSTransitionProp list) (render: TransitionStatus -> ReactElement): ReactElement =
     let props = (CSSTransitionProp.Children !^render)::props
     ofImport "CSSTransition" "react-transition-group" (keyValueList CaseRules.LowerFirst props) []
 
@@ -201,5 +201,5 @@ let cssTransitionWithRender (props: CSSTransitionProp list) (render: TransitionS
 /// in a list. Like with the `transition` element, `transitionGroup`, is a
 /// state machine for managing the mounting and unmounting of elements over
 /// time.
-let transitionGroup (props: TransitionGroupProp list) (children: React.ReactElement list): React.ReactElement =
+let transitionGroup (props: TransitionGroupProp list) (children: ReactElement list): ReactElement =
     ofImport "TransitionGroup" "react-transition-group" (keyValueList CaseRules.LowerFirst props) children

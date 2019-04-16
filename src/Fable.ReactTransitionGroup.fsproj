@@ -3,7 +3,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Fable.Helpers.ReactTransitionGroup.fs" />
+    <Compile Include="Fable.ReactTransitionGroup.fs" />
+    <Content Include="*.fsproj; *.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

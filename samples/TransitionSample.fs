@@ -1,10 +1,9 @@
 module TransitionSample
 
 open Fable.Core.JsInterop
-open Fable.Import.React
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.Helpers.ReactTransitionGroup
+open Fable.React
+open Fable.React.Props
+open Fable.ReactTransitionGroup
 
 type TransitionSampleState = {
     show: bool
@@ -12,7 +11,7 @@ type TransitionSampleState = {
 }
 
 type TransitionSample (props) =
-    inherit Component<unit, TransitionSampleState>(props)
+    inherit Component<obj, TransitionSampleState>(props)
     do base.setInitState({ show = false; entered = false })
     override self.render() =
         div [ Class "card" ] [

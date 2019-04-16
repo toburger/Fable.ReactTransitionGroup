@@ -1,10 +1,9 @@
 module CSSTransitionSample
 
 open Fable.Core.JsInterop
-open Fable.Import.React
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.Helpers.ReactTransitionGroup
+open Fable.React
+open Fable.React.Props
+open Fable.ReactTransitionGroup
 
 importSideEffects "./CSSTransitionSample.css"
 
@@ -15,7 +14,7 @@ type CSSTransitionSampleState = {
 }
         
 type CSSTransitionSample (props) =
-    inherit Component<unit, CSSTransitionSampleState>(props)
+    inherit Component<obj, CSSTransitionSampleState>(props)
     do base.setInitState({
         name = ""
         showValidationMessage = false

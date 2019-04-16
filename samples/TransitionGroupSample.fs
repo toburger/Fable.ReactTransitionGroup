@@ -1,10 +1,9 @@
 module TransitionGroupSample
 
 open Fable.Core.JsInterop
-open Fable.Import.React
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.Helpers.ReactTransitionGroup
+open Fable.React
+open Fable.React.Props
+open Fable.ReactTransitionGroup
 
 importSideEffects "./TransitionGroupSample.css"
 
@@ -18,7 +17,7 @@ type TransitionGroupSampleState = {
 }
 
 type TransitionGroupSample (props) =
-    inherit Component<unit, TransitionGroupSampleState>(props)
+    inherit Component<obj, TransitionGroupSampleState>(props)
     do base.setInitState({
         items = [
             { id = System.Guid.NewGuid(); text = "Buy eggs" }
@@ -78,7 +77,7 @@ type TransitionGroupSample (props) =
                 button [
                     Type "button"
                     OnClick (fun _ ->
-                        let text = Fable.Import.Browser.window.prompt("Enter some text")
+                        let text = Browser.Dom.window.prompt("Enter some text")
                         if not (System.String.IsNullOrEmpty text) then
                             self.setState(fun state _ -> {
                                 state with

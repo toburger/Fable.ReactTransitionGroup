@@ -1,7 +1,7 @@
 module App
 
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 let renderApp () =
     div [] [
@@ -26,4 +26,4 @@ let renderApp () =
     ]
 
 renderApp ()
-|> mountById "app"
+|> Helpers.mountById "app"

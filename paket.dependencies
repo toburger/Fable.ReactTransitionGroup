@@ -1,5 +1,6 @@
 source https://www.nuget.org/api/v2
 storage: none
 
-nuget Fable.Import.Browser
-nuget Fable.React
+nuget FSharp.Core redirects:force, content:none
+nuget Fable.Core prerelease
+nuget Fable.React prerelease
