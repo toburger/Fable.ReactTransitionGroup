@@ -5,7 +5,7 @@
 var path = require("path");
 
 module.exports = {
-    entry: "./src/Fable.ReactTransitionGroup.Sample.fsproj",
+    entry: "./samples/Fable.ReactTransitionGroup.Sample.fsproj",
     output: {
         path: path.join(__dirname, "./docs"),
         filename: "[name].js"

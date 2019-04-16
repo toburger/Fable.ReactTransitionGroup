@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "postinstall": "dotnet restore ./src",
+    "postinstall": "dotnet restore ./samples",
     "build": "yarn webpack -p",
     "start": "yarn webpack-dev-server -d"
   },
