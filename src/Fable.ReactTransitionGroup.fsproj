@@ -1,10 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Version>1.0.0-beta-001</Version>
+    <PackageVersion>1.0.0-beta-001</PackageVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Fable.ReactTransitionGroup.fs" />
-    <Content Include="*.fsproj; *.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="*.fsproj; *.fs" PackagePath="fable\" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
