@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>1.0.0-beta-001</Version>
-    <PackageVersion>1.0.0-beta-001</PackageVersion>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0-beta-002</Version>
+    <PackageVersion>1.0.0-beta-002</PackageVersion>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
