@@ -193,3 +193,5 @@ docs/tools/FSharp.Formatting.svclog
 .ionide.debug
 *.bak
 project.lock.json
+
+.ionide/
