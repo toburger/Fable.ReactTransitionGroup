@@ -4,6 +4,10 @@
 
 Fable bindings for [react-transition-group](https://reactcommunity.org/react-transition-group/)
 
+## Demo
+
+https://toburger.github.io/Fable.ReactTransitionGroup/
+
 ## Publish a new version
 
 Host your nuget API key inside a `NUGET_KEY` environnement variable, it will allow us to access it from CLI.
