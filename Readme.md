@@ -1,5 +1,7 @@
 # Fable.ReactTransitionGroup
 
+[![NuGet Badge](https://img.shields.io/nuget/v/Fable.ReactTransitionGroup.svg)](https://www.nuget.org/packages/Fable.ReactTransitionGroup/)
+
 Fable bindings for [react-transition-group](https://reactcommunity.org/react-transition-group/)
 
 ## Publish a new version
