@@ -1,5 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Description>
+Fable bindings for react-transition-group npm package
+    </Description>
+    <PackageProjectUrl>https://github.com/toburger/Fable.ReactTransitionGroup</PackageProjectUrl>
+    <!-- We use PackageLicenseUrl because paket doesn't understand PackageLicense yet -->
+    <PackageLicenseUrl>https://github.com/toburger/Fable.ReactTransitionGroup/blob/master/LICENSE.md</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/toburger/Fable.ReactTransitionGroup</RepositoryUrl>
+    <PackageTags>fable;fsharp;react</PackageTags>
+    <Authors>Tobias Burger</Authors>
     <Version>1.0.0-beta-002</Version>
     <PackageVersion>1.0.0-beta-002</PackageVersion>
     <TargetFramework>netstandard2.1</TargetFramework>
