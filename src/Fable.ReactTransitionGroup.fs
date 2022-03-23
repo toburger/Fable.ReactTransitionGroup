@@ -139,7 +139,7 @@ type TransitionGroupProp =
     /// You can change this behavior by providing a component prop.
     /// If you use React v16+ and would like to avoid a wrapping <div> element you can pass in `Component null`.
     /// This is useful if the wrapping div borks your css styles.
-    | Component of ReactElement
+    | Component of string
     /// A convenience prop that enables or disables appear animations for all children.
     /// Note that specifying this will override any defaults set on individual children Transitions.
     | Appear of bool
